@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // 一般的跳出两层循环,通过自定义标签跳出循环
 func gotoDemo01() {
@@ -81,9 +83,19 @@ forloop1: /// GO语言：定义一个 continue 标签，用的不多，执行到
 	fmt.Println("继续循环-continue标签语法")
 }
 
+func demo() {
+	for i := 1; i < 10; i++ {
+		for j := 1; j <= i; j++ {
+			fmt.Printf("%d*%d=%d\t", i, j, i*j)
+		}
+		fmt.Println()
+	}
+}
+
 func main() {
 	//gotoDemo01()
-	gotoDemo02()
+	//gotoDemo02()
 	// breakDemo()
 	// continueDemo()
+	demo()
 }
