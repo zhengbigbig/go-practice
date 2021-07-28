@@ -17,4 +17,6 @@ func main() {
 	fmt.Printf("%x \n", 1)
 	// 查看字符串
 	fmt.Printf("%s \n", "sss")
+	// 查看字符
+	fmt.Printf("%c \n", 's')
 }
