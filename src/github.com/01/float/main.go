@@ -15,5 +15,5 @@ func main() {
 	fmt.Printf("%f \n",float32(.232))
 	fmt.Printf("%f \n",math.MaxFloat32)
 	fmt.Printf("%f \n",math.MaxFloat64)
-	f1 = f2  // float32类型的值不能直接赋值给float64类型的变量
+	//f1 = f2  // float32类型的值不能直接赋值给float64类型的变量
 }
