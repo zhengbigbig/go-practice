@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unicode"
+)
 
 func sum(x int, y int) (ret int) {
 	return x + y
@@ -37,6 +40,7 @@ func f4(x string, y ...int) (string, []int) {
 	return x, y
 }
 
+
 func main() {
 	r := sum(1, 2)
 	fmt.Println(r)
@@ -44,5 +48,15 @@ func main() {
 	fmt.Println(n)
 	x, y := f4("1", 1, 23, 4)
 	fmt.Println(x, y)
-
+	// 1. 判断字符串中汉字的数量
+	s1 := "sdasd牛asd*721"
+	var count int
+	for _, c := range s1 {
+		// 2. 判断当前这个字符是不是汉字
+		if unicode.Is(unicode.Han,c){
+			count ++
+		}
+	}
+	// 3. 把汉字出现次数累加打印
+	fmt.Println(count)
 }
