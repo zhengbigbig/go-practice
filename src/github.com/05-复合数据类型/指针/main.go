@@ -25,7 +25,19 @@ func main() {
 	fmt.Println(*a)
 
 	var b map[string]int
-	b = make(map[string]int,10)
+	b = make(map[string]int, 10)
 	b["hello"] = 100
 	fmt.Println(b)
+
+	var x int
+	x = 100
+	y := &x
+	fmt.Printf("type a:%T type b:%T\n", x, y)
+	// 将a的十六进制内存地址打印出来
+	fmt.Printf("%p\n", &x)
+	fmt.Printf("%p\n", y)
+	fmt.Printf("%v\n", y)
+	fmt.Printf("%p\n", &y)
+	fmt.Printf("%v\n", *y)
+
 }
