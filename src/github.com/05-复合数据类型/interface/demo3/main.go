@@ -15,10 +15,23 @@ func main() {
 
 	var x interface{}
 	x = "hello"
-	v,ok := x.(string)
+	v, ok := x.(string)
 	if !ok {
-		fmt.Printf("断言失败，实际类型为%T\n",x)
-	}else {
-		fmt.Printf("值为：%v\n",v)
+		fmt.Printf("断言失败，实际类型为%T\n", x)
+	} else {
+		fmt.Printf("值为：%v\n", v)
+	}
+	assign(x)
+}
+
+func assign(a interface{}) {
+	fmt.Printf("%T\n", a)
+	switch t := a.(type) {
+	case string:
+		fmt.Println("string", t)
+	case int:
+		fmt.Println("int", t)
+	case bool:
+		fmt.Println("bool", t)
 	}
 }
