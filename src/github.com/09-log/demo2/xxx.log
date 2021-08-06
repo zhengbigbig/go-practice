@@ -1,0 +1,2 @@
+2021/08/05 18:02:44.165708 /Users/zhengzhiheng/Desktop/go-practice/src/github.com/09-log/demo2/main.go:17: normal log
+[prefix]2021/08/05 18:02:44.165854 /Users/zhengzhiheng/Desktop/go-practice/src/github.com/09-log/demo2/main.go:19: normal log
