@@ -62,6 +62,7 @@ func (f *FileLogger) enable(logLevel LogLevel) bool {
 func (f *FileLogger) isOverMaxSize(fileObj *os.File) bool {
 	// 1. 获取文件对象的详细信息
 	fileInfo, err := fileObj.Stat()
+	fmt.Println(fileInfo, "fileInfo",err)
 	if err != nil {
 		fmt.Println("get file info failed,err:", err)
 		return false
@@ -72,9 +73,6 @@ func (f *FileLogger) isOverMaxSize(fileObj *os.File) bool {
 
 func (f *FileLogger) splitFile(file *os.File) (*os.File, error) {
 	// 需要日志切割
-	// 1. 关闭当前日志文件
-	file.Close()
-	// 2. 备份一下 rename
 	bkStr := time.Now().Format("20060102150405000")
 	fileInfo, err := file.Stat()
 	if err != nil {
@@ -83,6 +81,9 @@ func (f *FileLogger) splitFile(file *os.File) (*os.File, error) {
 	}
 	oldNamePath := path.Join(f.filePath, fileInfo.Name())     // 拿到当前的日志文件完整路径
 	newLogName := fmt.Sprintf("%s.bak%s", oldNamePath, bkStr) // 拼接一个备份名
+	// 1. 关闭当前日志文件
+	file.Close()
+	// 2. 备份一下 rename
 	os.Rename(oldNamePath, newLogName)
 	// 3. 打开一个新的日志文件
 	fileObj, err := os.OpenFile(oldNamePath, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
