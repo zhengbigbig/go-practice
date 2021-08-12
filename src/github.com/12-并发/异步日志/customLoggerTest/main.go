@@ -6,7 +6,7 @@ import logger "github.com/09-log/customLogger"
 var log logger.Logger // 声明一个全局的接口变量
 
 func main() {
-	log = logger.NewConsoleLog("debug")
+	//log = logger.NewConsoleLog("debug")
 	log = logger.NewFileLog("debug", "./", "test.log", 1024)
 	for i := 0; i < 1000; i++ {
 		log.Debug("debugger日志 %s\n", "sss")

@@ -5,8 +5,7 @@ import (
 	"time"
 )
 
-// Logger 往终端写日志相关内容
-// Logger日志结构体
+// ConsoleLogger Logger 往终端写日志相关内容
 type ConsoleLogger struct {
 	Level LogLevel
 }
@@ -25,6 +24,7 @@ func (c ConsoleLogger) enable(logLevel LogLevel) bool {
 	return c.Level <= logLevel
 }
 
+// a 可变长的interface{}参数 实际上是切片
 func (c ConsoleLogger) log(lv LogLevel, format string, a ...interface{}) {
 	if c.enable(lv) {
 		msg := fmt.Sprintf(format, a...)

@@ -6,7 +6,7 @@ import (
 )
 
 func hello(i int) {
-	fmt.Println("hello goroutine",i)
+	fmt.Println("hello single_goroutine",i)
 }
 
 // 程序启动之后会创建一个goroutine去执行
@@ -17,7 +17,7 @@ func main() {
 		go func(i int) {println(i)}(i) // 将i传递进去，拿到的i是参数的i，不是外面的i
 
 	}
-	fmt.Println("main goroutine done")
+	fmt.Println("main single_goroutine done")
 	// main函数结束，由main函数启动的goroutine也都结束了，因此需要等待
 	time.Sleep(time.Second)
 }
