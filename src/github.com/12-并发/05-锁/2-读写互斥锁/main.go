@@ -1,0 +1,48 @@
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+var (
+	x      int64
+	wg     sync.WaitGroup
+	lock   sync.Mutex
+	rwLock sync.RWMutex
+)
+
+func write() {
+	//lock.Lock() // 加互斥锁
+	rwLock.Lock() // 加写锁
+	x = x + 1
+	time.Sleep(10 * time.Millisecond) // 假设读操作耗时10毫秒
+	rwLock.Unlock()                   // 解写锁
+	// lock.Unlock() // 解互斥锁
+	wg.Done()
+}
+
+func read() {
+	// lock.Lock() // 加互斥锁
+	rwLock.RLock()               // 加读锁
+	time.Sleep(time.Millisecond) // 假设读操作耗时1毫秒
+	rwLock.RUnlock()             // 解读锁
+	// lock.Unlock() // 解互斥锁
+	wg.Done()
+}
+
+func main() {
+	start := time.Now()
+	for i := 0; i < 10; i++ {
+		wg.Add(1)
+		go write()
+	}
+	for i := 0; i < 1000; i++ {
+		wg.Add(1)
+		go read()
+	}
+	wg.Wait()
+	end := time.Now()
+	fmt.Println(end.Sub(start)) // 读写锁将远远快于互斥锁
+}
