@@ -9,7 +9,7 @@ import (
 
 // bufio 按行读取
 func main() {
-	file, err := os.Open("./main.go")
+	file, err := os.Open("./split.go")
 	if err != nil {
 		fmt.Println("open file failed,err:", err)
 		return

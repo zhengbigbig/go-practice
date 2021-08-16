@@ -7,7 +7,7 @@ import (
 
 // ioutil.ReadFile读取整个文件
 func main() {
-	content, err := ioutil.ReadFile("./main.go")
+	content, err := ioutil.ReadFile("./split.go")
 	if err != nil {
 		fmt.Println("read file failed,err:", err)
 		return
