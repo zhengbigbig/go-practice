@@ -1,0 +1,8 @@
+mode: set
+github.com/14-测试/1-单元测试/split/split.go:11.52,12.15 1 1
+github.com/14-测试/1-单元测试/split/split.go:18.2,19.13 2 1
+github.com/14-测试/1-单元测试/split/split.go:24.2,25.8 2 1
+github.com/14-测试/1-单元测试/split/split.go:12.15,13.22 1 1
+github.com/14-测试/1-单元测试/split/split.go:16.3,16.9 1 1
+github.com/14-测试/1-单元测试/split/split.go:13.22,15.4 1 1
+github.com/14-测试/1-单元测试/split/split.go:19.13,23.3 3 1
