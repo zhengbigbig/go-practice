@@ -73,8 +73,7 @@ func overTurn(head *node) (ret *node) {
 		// 指针整体向后移动
 		beg, mid, end = mid, end, end.Next
 	}
-	ret = mid
-	return ret
+	return mid
 }
 // 翻转链表-递归
 func overTurn2(head *node) *node {
@@ -117,7 +116,7 @@ func main() {
 	}
 	node1.Next = node2
 	node2.Next = node3
-	n1 := overTurn2(node1)
+	n1 := overTurn(node1)
 	for n1 != nil {
 		fmt.Println(n1.Val)
 		n1 = n1.Next
