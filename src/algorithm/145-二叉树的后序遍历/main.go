@@ -73,7 +73,6 @@ func printEnd(root *TreeNode,ret []int) []int  {
 	tail := turnOffNode(root)
 	cur:= tail
 	for cur != nil {
-		fmt.Println(ret,cur.Val)
 		ret = append(ret,cur.Val)
 		cur = cur.Right
 	}

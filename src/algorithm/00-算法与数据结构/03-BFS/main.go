@@ -8,25 +8,37 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-//func bfs(root *TreeNode)  {
-//
-//}
+func bfs(root *TreeNode) {
+	var lst []*TreeNode
+	lst = append(lst, root)
+	for len(lst) > 0 {
+		cur := lst[0]
+		lst = lst[1:]
+		if cur.Left != nil {
+			lst = append(lst, cur.Left)
+		}
+		if cur.Right != nil {
+			lst = append(lst, cur.Right)
+		}
+		fmt.Println(cur.Val)
+	}
+}
 
 func main() {
 	node1 := &TreeNode{
 		Val: 1,
-		Right: &TreeNode{
+		Left: &TreeNode{
 			Val: 2,
+		},
+		Right: &TreeNode{
+			Val: 3,
 			Left: &TreeNode{
-				Val: 3,
+				Val: 4,
 			},
 			Right: &TreeNode{
-				Val: 4,
-				Right: &TreeNode{
-					Val: 5,
-				},
+				Val: 5,
 			},
 		},
 	}
-	fmt.Println(node1)
+	bfs(node1)
 }
