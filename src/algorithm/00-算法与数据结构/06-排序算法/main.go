@@ -171,8 +171,27 @@ func shellSort(arr []int) []int {
 
 // 9. 基数排序
 // 复杂度：平均时间复杂度O(n+k) 空间复杂度O(n+k) 稳定
+// 核心：数组下标为值，值为个数
+
 // 10. 计数排序
-// 复杂度：平均时间复杂度O(n+k) 空间复杂度O(k) 稳定
+// 复杂度：平均时间复杂度O(n+k) 空间复杂度O(n+k) 稳定
+func countingSort(arr []int, maxValue int) []int {
+	bucketLen := maxValue + 1
+	bucket := make([]int, bucketLen) // 初始化为0数组
+	n := len(arr)
+	sortedIndex := 0
+	for i := 0; i < n; i++ {
+		bucket[arr[i]] ++
+	}
+	for j := 0; j < bucketLen; j++ {
+		for bucket[j] > 0 {
+			arr[sortedIndex] = j
+			sortedIndex++
+			bucket[j] --
+		}
+	}
+	return arr
+}
 
 func main() {
 	arr := []int{9, 8, 7, 6, 5, 4, 3, 2, 1, 10, 11, 13, 12, 22, 33, 55, 44}
