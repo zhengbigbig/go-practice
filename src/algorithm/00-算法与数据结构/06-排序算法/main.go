@@ -165,6 +165,37 @@ func shellSort(arr []int) []int {
 
 // 7. 堆排序
 // 复杂度：平均时间复杂度O(n log n) 空间复杂度O(1) 不稳定
+func heapSort(arr []int) []int {
+	arrLen := len(arr)
+	buildMaxHeap(arr,arrLen)
+	for i :=arrLen-1; i >= 0; i-- {
+		swap(arr,0,i)
+		arrLen -= 1
+		heapify(arr,0,arrLen)
+	}
+	return arr
+}
+
+func buildMaxHeap(arr []int, arrLen int)  {
+	for i := arrLen/2; i >= 0; i-- {
+		heapify(arr,i,arrLen)
+	}
+}
+func heapify(arr []int, i, arrLen int) {
+	left := 2*i+1
+	right := 2*i +2
+	largest := i
+	if left < arrLen && arr[left] > arr[largest] {
+		largest = left
+	}
+	if right < arrLen && arr[right] > arr[largest] {
+		largest = right
+	}
+	if largest != i {
+		swap(arr,i,largest)
+		heapify(arr,largest,arrLen)
+	}
+}
 
 // 8. 桶排序
 // 复杂度：平均时间复杂度O(n+k) 空间复杂度O(n+k) 稳定
@@ -172,7 +203,26 @@ func shellSort(arr []int) []int {
 // 9. 基数排序
 // 复杂度：平均时间复杂度O(n+k) 空间复杂度O(n+k) 稳定
 // 核心：数组下标为值，值为个数
-
+func radixSort(arr []int,digit int) []int {
+	n := len(arr)
+	l := 1
+	for i := 0; i < digit; i++ {
+		var bkt [10][]int
+		var ret []int
+		for j := 0; j < n; j++ {
+			num := arr[j] / l % 10
+			bkt[num] = append(bkt[num],arr[j])
+		}
+		for k := 0; k < 10; k++ {
+			ret = append(ret,bkt[k]...)
+		}
+		for k := range arr {
+			arr[k] = ret[k]
+		}
+		l *= 10
+	}
+	return arr
+}
 // 10. 计数排序
 // 复杂度：平均时间复杂度O(n+k) 空间复杂度O(n+k) 稳定
 func countingSort(arr []int, maxValue int) []int {
